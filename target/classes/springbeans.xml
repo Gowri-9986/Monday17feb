@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+ <context:annotation-config/>
+ <context:component-scan base-package="com.service"/>
+ <context:component-scan base-package="com.dao"/>
+ <bean class="com.model.Userservice" id="service1">
+ <property name="serviceid" value="9001"/>
+ <property name="servicename" value ="TelephonyService"/>
+ <property name="servicetype" value="caller"/>
+ 
+ </bean>
+ <bean class="com.model.Userservice" id="service2">
+ <property name="serviceid" value="874"/>
+ <property name="servicename" value ="Inter City Messaging"/>
+ <property name="servicetype" value="Messaging"/>
+ 
+ </bean>
+ 
+ <bean class="com.model.City" id="City1">
+ <property name="cityname" value="chennai"/>
+ <property name="state" value ="Tamilnadu"/>
+ <property name="pincode" value="600011"/>
+ 
+ </bean>
+ <bean class="com.model.City" id="City2">
+ <property name="cityname" value="Bengaluru"/>
+ <property name="state" value ="Karnataka"/>
+ <property name="pincode" value="78001"/>
+ 
+ </bean>
+ <bean class="com.model.City" id="City3">
+ <property name="cityname" value="Hyderabad"/>
+ <property name="state" value ="Andhrapradesh"/>
+ <property name="pincode" value="45001"/>
+ 
+ </bean>
+ <bean class="com.model.Subscription" id="subcription1">
+ 
+ <property name="userservicelist">
+ <list>
+ <ref bean="service1"/>
+ <ref bean="service2"/>
+ 
+ </list></property>
+ 
+ 
+ </bean>
+ 
+ <bean class="com.model.CityBasedService" id="cityservice1">
+ 
+ <property name="subcription">
+ <list>
+ <ref bean="subcription1"/>
+ 
+ 
+ </list></property>
+ 
+ 
+ 
+ 
+ <property name="city">
+ <list>
+ <ref bean="City1"/>
+ <ref bean="City2"/>
+ <ref bean="City3"/>
+ 
+ 
+ </list></property>
+ </bean>
+ 
+ </beans>
